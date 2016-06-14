@@ -12,7 +12,7 @@ ARGS:
     -f  Path to folder containing XML files
     
 OPTIONS:
-    -i  List of files to ignore
+    -i  Comma separated list of files to ignore
 ```
 
 ### Example Usage
