@@ -15,7 +15,7 @@ OPTIONS:
     -i  List of files to ignore
 ```
 
-### Usage
+### Example Usage
 
 Basic
 ```
