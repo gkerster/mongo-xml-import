@@ -14,3 +14,15 @@ ARGS:
 OPTIONS:
     -i  List of files to ignore
 ```
+
+### Usage
+
+Basic
+```
+node server -d DB_NAME -c COLLECTION_NAME -f ../XMLFiles/
+```
+
+Ignorning specific files
+```
+node server -d DB_NAME -c COLLECTION_NAME -f ../XMLFiles/ -i *.parcel,.DS_Store,*.txt,*.tsv
+```
