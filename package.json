@@ -1,0 +1,10 @@
+{
+  "name": "MongoXMLLoad",
+  "dependencies": {
+    "async": "^1.5.2",
+    "minimist": "^1.2.0",
+    "mongoose": "^4.4.7",
+    "recursive-readdir": "^2.0.0",
+    "xml2js": "*"
+  }
+}
