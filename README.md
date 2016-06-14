@@ -1,6 +1,6 @@
 # mongo-xml-load
 
-Quick and dirty utility to load xml files into a MongoDB collection.
+Quick and dirty xml bulk load utility for MongoDB.
 
 ```
 USAGE:
