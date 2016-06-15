@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 var async = require('async')
 var fs = require('fs');
 var xml2js = require('xml2js');

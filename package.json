@@ -2,7 +2,10 @@
   "name": "mongo-xml-import",
   "version": "0.1.0",
   "description": "Quick and dirty xml bulk load utility for MongoDB",
-  "main": "server.js",
+  "bin": {
+    "importxml": "server.js"
+  },
+  "preferGlobal": true,
   "repository": {
     "type": "git",
     "url": "git://github.com/gkerster/mongo-xml-load.git"
