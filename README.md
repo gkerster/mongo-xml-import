@@ -15,7 +15,7 @@ OPTIONS:
     -i  Comma separated list of files to ignore
 ```
 
-### Example Usage
+### Usage
 
 Basic
 ```
@@ -26,3 +26,6 @@ Ignorning specific files
 ```
 node server -d DB_NAME -c COLLECTION_NAME -f ../XMLFiles/ -i *.TCGA-A8-A0A1.xml,*_TEMP.xml
 ```
+
+### Example
+![Example](https://github.com/gkerster/mongo-xml-import/blob/master/example/example_output.png)
