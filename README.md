@@ -1,4 +1,4 @@
-# mongo-xml-load
+# mongo-xml-import
 
 Quick and dirty xml bulk load utility for MongoDB. Uses [xml2js](https://github.com/Leonidas-from-XIV/node-xml2js), [recursive-readdir](https://github.com/jergason/recursive-readdir), [mongoose](http://mongoosejs.com/), and [minimist](https://github.com/substack/minimist).
 

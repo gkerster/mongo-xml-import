@@ -1,5 +1,20 @@
 {
-  "name": "MongoXMLLoad",
+  "name": "mongo-xml-import",
+  "version": "0.0.0",
+  "description": "Quick and dirty xml bulk load utility for MongoDB",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gkerster/mongo-xml-load.git"
+  },
+  "keywords": [
+    "MongoDB",
+    "XML",
+    "Bulk",
+    "Import",
+    "Load"
+  ],
+  "author": "Graham Kerster <gkerster@gmail.com>",
   "dependencies": {
     "async": "^1.5.2",
     "minimist": "^1.2.0",
