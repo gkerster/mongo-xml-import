@@ -5,10 +5,11 @@
   "bin": {
     "importxml": "server.js"
   },
+  "main": "server.js",
   "preferGlobal": true,
   "repository": {
     "type": "git",
-    "url": "git://github.com/gkerster/mongo-xml-load.git"
+    "url": "git://github.com/gkerster/mongo-xml-import.git"
   },
   "keywords": [
     "MongoDB",
@@ -20,7 +21,6 @@
   "author": "Graham Kerster <gkerster@gmail.com>",
   "dependencies": {
     "async": "^1.5.2",
-    "minimist": "^1.2.0",
     "mongoose": "^4.4.7",
     "recursive-readdir": "^2.0.0",
     "xml2js": "*"
@@ -28,6 +28,7 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "colors": "^1.1.2",
+    "commander": "^2.9.0",
     "mocha": "^2.5.3",
     "progress": "^1.1.8"
   }

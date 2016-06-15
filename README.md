@@ -7,12 +7,12 @@ USAGE:
     node server [ARGS] [OPTIONS]
 
 ARGS:
-    -d  MongoDB Database
-    -c  MongoDB Collection
-    -f  Path to folder containing XML files
+    -d, --db          MongoDB Database
+    -c, --collection  MongoDB Collection
+    -f, --folder      Path to folder containing XML files
     
 OPTIONS:
-    -i  Comma separated list of files to ignore
+    -i, --ignore      Comma separated list of files to ignore
 ```
 
 ### Usage

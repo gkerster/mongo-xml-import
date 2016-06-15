@@ -8,9 +8,30 @@ var processors = require('xml2js/lib/processors');
 var path = require("path");
 var recursive = require('recursive-readdir');
 var ProgressBar = require('progress');
-var argv = require('minimist')(process.argv.slice(2));
+
+var program = require('commander');
+program
+    .version('0.1.0')
+    .description('Quick and dirty xml bulk load utility for MongoDB.')
+    .arguments('<db> <collection> <folder>')
+    .option('-d, --db <db>', 'Specify MongoDB Database')
+    .option('-c, --collection <collection>', 'Sepcify MongoDB Collection')
+    .option('-f, --folder <folder>', 'Specify the path to the folder that contains the XML files')
+    .option('-i, --ignore [ignore]', 'List XML files that should not be imported')
+    .on('--help', function() {
+        console.log('  Example Usage');
+        console.log('');
+        console.log('    $ node server -d myDB -c myCollection -f ../../pathToFolder');
+        console.log('    $ node server --db myDB --collection myCollection --folder ../../pathToFolder');
+        console.log('');
+    })
+    .action(function(db, collection, folder){
+        console.log(db)
+    }) 
+    .parse(process.argv);
+
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/' + argv.d);
+mongoose.connect('mongodb://localhost/' + program.db);
 
 var Schema = mongoose.Schema,
     ObjectId = Schema.ObjectId;
@@ -19,18 +40,19 @@ var XMLSchema = new Schema({
     data: Schema.Types.Mixed
 });
 
-var XMLSchema_Model = mongoose.model(argv.c, XMLSchema);
+var XMLSchema_Model = mongoose.model(program.collection, XMLSchema);
 
-var fileDir = path.resolve(argv.f)
+var fileDir = path.resolve(program.folder)
 var green = '\u001b[42m \u001b[0m';
+
 var results = {
     success: 0,
     error: 0,
     errorList: []
 }
 var ignoreOptions = [ignoreFunc];
-if (argv.i)
-    ignoreOptions = argv.i.split(',').concat(ignoreOptions);
+if (program.ignore)
+    ignoreOptions = program.ignore.split(',').concat(ignoreOptions);
 
 var parser = new xml2js.Parser({
         ignoreAttrs: true, 
