@@ -24,5 +24,5 @@ node server -d DB_NAME -c COLLECTION_NAME -f ../XMLFiles/
 
 Ignorning specific files
 ```
-node server -d DB_NAME -c COLLECTION_NAME -f ../XMLFiles/ -i *.parcel,.DS_Store,*.txt,*.tsv
+node server -d DB_NAME -c COLLECTION_NAME -f ../XMLFiles/ -i *.TCGA-A8-A0A1.xml,*_TEMP.xml
 ```
