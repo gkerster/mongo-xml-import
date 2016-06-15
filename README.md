@@ -21,12 +21,14 @@ OPTIONS:
 
 Basic
 ```
-node server -d DB_NAME -c COLLECTION_NAME -f ../XMLFiles/
+$ node server -d DB_NAME -c COLLECTION_NAME -f ../XMLFiles/
+$ node server --db DB_NAME --collection COLLECTION_NAME --folder ../XMLFiles/
 ```
 
 Ignorning specific files
 ```
-node server -d DB_NAME -c COLLECTION_NAME -f ../XMLFiles/ -i *.TCGA-A8-A0A1.xml,*_TEMP.xml
+$ node server -d DB_NAME -c COLLECTION_NAME -f ../XMLFiles/ -i *.TCGA-A8-A0A1.xml,*_TEMP.xml
+$ node server --db DB_NAME --collection COLLECTION_NAME --folder ../XMLFiles/ --ignore *.TCGA-A8-A0A1.xml,*_TEMP.xml
 ```
 
 ### Example
