@@ -13,6 +13,8 @@ ARGS:
     
 OPTIONS:
     -i, --ignore      Comma separated list of files to ignore
+    -h, --help        Output usage information
+    -V, --version     Output the version number
 ```
 
 ### Usage
