@@ -1,34 +1,36 @@
 # mongo-xml-import
 
-Quick and dirty xml bulk load utility for MongoDB. Uses [xml2js](https://github.com/Leonidas-from-XIV/node-xml2js), [recursive-readdir](https://github.com/jergason/recursive-readdir), [mongoose](http://mongoosejs.com/), and [minimist](https://github.com/substack/minimist).
+Quick and dirty command-line XML bulk load utility for MongoDB. Uses [xml2js](https://github.com/Leonidas-from-XIV/node-xml2js), [recursive-readdir](https://github.com/jergason/recursive-readdir), [mongoose](http://mongoosejs.com/), and [minimist](https://github.com/substack/minimist).
 
 ```
 USAGE:
-    node server [ARGS] [OPTIONS]
+    importxml [OPTIONS] <db> <collection> <folder>
 
 ARGS:
-    -d, --db          MongoDB Database
-    -c, --collection  MongoDB Collection
-    -f, --folder      Path to folder containing XML files
+    -d, --db <db>                   MongoDB Database
+    -c, --collection <collection>   MongoDB Collection
+    -f, --folder <folder>           Path to folder containing XML files
     
 OPTIONS:
-    -i, --ignore      Comma separated list of files to ignore
-    -h, --help        Output usage information
-    -V, --version     Output the version number
+    -i, --ignore [ignore]    Comma separated list of files to ignore
+    -H, --host [host]        Host to which MongoDB is running, defaults to localhost
+    -D, --Drop               Drop collection prior to insert
+    -h, --help               Output usage information
+    -V, --version            Output the version number
 ```
 
 ### Usage
 
 Basic
 ```
-$ node server -d DB_NAME -c COLLECTION_NAME -f ../XMLFiles/
-$ node server --db DB_NAME --collection COLLECTION_NAME --folder ../XMLFiles/
+$ importxml -d DB_NAME -c COLLECTION_NAME -f ../XMLFiles/
+$ importxml --db DB_NAME --collection COLLECTION_NAME --folder ../XMLFiles/
 ```
 
 Ignorning specific files
 ```
-$ node server -d DB_NAME -c COLLECTION_NAME -f ../XMLFiles/ -i *.TCGA-A8-A0A1.xml,*_TEMP.xml
-$ node server --db DB_NAME --collection COLLECTION_NAME --folder ../XMLFiles/ --ignore *.TCGA-A8-A0A1.xml,*_TEMP.xml
+$ importxml -d DB_NAME -c COLLECTION_NAME -f ../XMLFiles/ -i *.TCGA-A8-A0A1.xml,*_TEMP.xml
+$ importxml --db DB_NAME --collection COLLECTION_NAME --folder ../XMLFiles/ --ignore *.TCGA-A8-A0A1.xml,*_TEMP.xml
 ```
 
 ### Example
