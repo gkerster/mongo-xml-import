@@ -11,6 +11,9 @@
     "type": "git",
     "url": "git://github.com/gkerster/mongo-xml-import.git"
   },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "keywords": [
     "MongoDB",
     "XML",

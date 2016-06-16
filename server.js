@@ -15,10 +15,12 @@ program
     .version('0.1.0')
     .description('Quick and dirty xml bulk load utility for MongoDB.')
     .arguments('<db> <collection> <folder>')
-    .option('-d, --db <db>', 'Specify MongoDB Database')
-    .option('-c, --collection <collection>', 'Sepcify MongoDB Collection')
-    .option('-f, --folder <folder>', 'Specify the path to the folder that contains the XML files')
-    .option('-i, --ignore [ignore]', 'List XML files that should not be imported')
+    .option('-d, --db <db>', 'specify mongodb database')
+    .option('-c, --collection <collection>', 'specify mongodb collection')
+    .option('-f, --folder <folder>', 'specify the path to the folder that contains the xml files')
+    .option('-i, --ignore [ignore]', 'list XML files that should not be imported')
+    .option('-d, --drop', 'drop collection prior to insert')
+    .option('-H, --host [host]', 'host to which mongodb is running. defaults to localhost')
     .parse(process.argv);
 
 checkRequiredArgs(function(msg){
@@ -52,7 +54,7 @@ function checkRequiredArgs(callback) {
 
 function startImportProcess() {
     var mongoose = require('mongoose');
-    mongoose.connect('mongodb://localhost/' + program.db);
+    mongoose.connect('mongodb://' + (!program.host ? 'localhost' : program.host) + '/' + program.db);
 
     var Schema = mongoose.Schema,
         ObjectId = Schema.ObjectId;
