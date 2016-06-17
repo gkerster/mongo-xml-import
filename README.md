@@ -1,6 +1,6 @@
 # mongo-xml-import
 
-Quick and dirty command-line XML bulk load utility for MongoDB. Uses [xml2js](https://github.com/Leonidas-from-XIV/node-xml2js), [recursive-readdir](https://github.com/jergason/recursive-readdir), [mongoose](http://mongoosejs.com/), and [minimist](https://github.com/substack/minimist).
+Quick and dirty command-line XML bulk load utility for MongoDB. Uses [xml2js](https://github.com/Leonidas-from-XIV/node-xml2js), [mongoose](http://mongoosejs.com/), [yargs](https://github.com/yargs/yargs), and [recursive-readdir](https://github.com/jergason/recursive-readdir).
 
 ```
 Usage: importxml <cmd> [options]
@@ -22,7 +22,7 @@ Options:
 
 ### usage
 
-Basic
+Basic   
 ```
 $ importxml -d DB_NAME -c COLLECTION_NAME -f ../XMLFiles/
 $ importxml --db DB_NAME --collection COLLECTION_NAME --folder ../XMLFiles/
