@@ -20,7 +20,7 @@ Options:
   -v, --version     Show version number  [boolean]
 ```
 
-### Usage
+### usage
 
 Basic
 ```
@@ -34,7 +34,7 @@ $ importxml -d DB_NAME -c COLLECTION_NAME -f ../XMLFiles/ -i *.TCGA-A8-A0A1.xml,
 $ importxml --db DB_NAME --collection COLLECTION_NAME --folder ../XMLFiles/ --ignore *.TCGA-A8-A0A1.xml,*_TEMP.xml
 ```
 
-### Example
+### example
 ![Example](https://github.com/gkerster/mongo-xml-import/blob/master/example/example_output.png)
 
 ### license
