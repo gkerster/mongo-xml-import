@@ -36,3 +36,7 @@ $ importxml --db DB_NAME --collection COLLECTION_NAME --folder ../XMLFiles/ --ig
 
 ### Example
 ![Example](https://github.com/gkerster/mongo-xml-import/blob/master/example/example_output.png)
+
+### license
+
+MIT
