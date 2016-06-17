@@ -9,52 +9,129 @@ var path = require("path");
 var recursive = require('recursive-readdir');
 var ProgressBar = require('progress');
 
-var program = require('commander');
+var argv = require('yargs')
+  .usage('Usage: $0 <cmd> [options]') 
+    .option('d', { 
+        description: 'mongodb database',
+        alias: 'db',
+        type: 'string',
+        requiresArg: true
+      })
+      .option('c', { 
+        description: 'mongodb collection',
+        alias: 'collection',
+        type: 'string',
+        requiresArg: true
+      })
+      .option('f', { 
+        description: 'path to the folder that contains the xml files',
+        alias: 'folder',
+        type: 'string',
+        requiresArg: true
+      })
+      .option('i', { 
+        description: 'list XML files that should not be imported',
+        alias: 'ignore',
+        type: 'string',
+        requiresArg: true
+      })
+      .option('D', {
+        description: 'drop collection prior to import',
+        alias: 'drop',
+        type: 'boolean',
+        default: false
+      })
+      .option('H', {
+        description: 'mongodb host',
+        alias: 'host',
+        type: 'string',
+        default: 'localhost'
+      })
+  .command(
+    'start [options]',
+    'import xml file(s)',
+    function (yargs) {
+      return yargs
+      .usage('Usage: $0 [options]')
+      .option('d', { 
+        description: 'mongodb database',
+        alias: 'db',
+        required: true,
+        type: 'string',
+        requiresArg: true
+      })
+      .option('c', { 
+        description: 'mongodb collection',
+        alias: 'collection',
+        required: true,
+        type: 'string',
+        requiresArg: true
+      })
+      .option('f', { 
+        description: 'path to the folder that contains the xml files',
+        alias: 'folder',
+        required: true,
+        type: 'string',
+        requiresArg: true
+      })
+      .option('i', { 
+        description: 'list XML files that should not be imported',
+        alias: 'ignore',
+        required: false,
+        type: 'string',
+        requiresArg: true
+      })
+      .option('D', {
+        description: 'drop collection prior to import',
+        alias: 'drop',
+        required: false,
+        type: 'boolean'
+      })
+      .option('H', {
+        description: 'mongodb host',
+        alias: 'host',
+        required: false,
+        type: 'string',
+        default: 'localhost'
+      })
+    },
+    function (argv) {
+      startImportProcess(argv);
+    }
+  )
+  .command(
+    'model [options]',
+    'create mongodb collection based on specified xsd',
+    function (yargs) {
+      return yargs.option('x', { 
+        description: 'path to xsd file',
+        alias: 'xsd',
+        required: true,
+        type: 'string',
+        requiresArg: true
+      })
+    },
+    function (argv) {
+      console.log(make_red('\nXSD feature coming soon!\n'))
+      process.exit();
+    }
+  )
+  .demand(1, make_red('\nmust provide a valid command\n'))
+  .strict()
+  .wrap(null)
+  .option('h', {
+    alias: 'help'
+  })
+  .option('v', {
+    alias: 'version'
+  })
+  .version()
+  .help('help')
+  .argv
 
-program
-    .version('0.1.0')
-    .description('Quick and dirty xml bulk load utility for MongoDB.')
-    .arguments('<db> <collection> <folder>')
-    .option('-d, --db <db>', 'specify mongodb database')
-    .option('-c, --collection <collection>', 'specify mongodb collection')
-    .option('-f, --folder <folder>', 'specify the path to the folder that contains the xml files')
-    .option('-i, --ignore [ignore]', 'list XML files that should not be imported')
-    .option('-d, --drop', 'drop collection prior to insert')
-    .option('-H, --host [host]', 'host to which mongodb is running. defaults to localhost')
-    .parse(process.argv);
-
-checkRequiredArgs(function(msg){
-    if (msg) {
-        for (var i=0; i<msg.length; i++) {
-            console.log(msg[i]);
-        }
-        process.exit(1)
-    } else {
-        startImportProcess();
-    }
-});
-
-function checkRequiredArgs(callback) {
-    var missingArgMsgs = [];
-    if (!process.argv.slice(2).length) {
-        program.help(make_red);
-        process.exit(1);
-    }
-    if (!program.db) {
-        missingArgMsgs.push(make_red('  error: you must specify a mongodb database using options: -d, --db'));
-    }
-    if (!program.collection) {
-        missingArgMsgs.push(make_red('  error: you must specify a mongodb collection using options: -c, --collection'));
-    }
-    if (!program.folder) {
-        missingArgMsgs.push(make_red('  error: you must specify the path to the folder that contains the XML files using options: -f, --folder'));
-    }
-    callback(missingArgMsgs.length > 0 ? missingArgMsgs : null);
-}
-
-function startImportProcess() {
+function startImportProcess(argv) {
     var mongoose = require('mongoose');
-    mongoose.connect('mongodb://' + (!program.host ? 'localhost' : program.host) + '/' + program.db);
+    mongoose.connect('mongodb://' + argv.host + '/' + argv.db);
 
     var Schema = mongoose.Schema,
         ObjectId = Schema.ObjectId;
@@ -63,9 +140,9 @@ function startImportProcess() {
         data: Schema.Types.Mixed
     });
 
-    var XMLSchema_Model = mongoose.model(program.collection, XMLSchema);
+    var XMLSchema_Model = mongoose.model(argv.collection, XMLSchema);
 
-    var fileDir = path.resolve(program.folder)
+    var fileDir = path.resolve(argv.folder)
     var green = '\u001b[42m \u001b[0m';
 
     var results = {
@@ -74,8 +151,8 @@ function startImportProcess() {
         errorList: []
     }
     var ignoreOptions = [ignoreFunc];
-    if (program.ignore)
-        ignoreOptions = program.ignore.split(',').concat(ignoreOptions);
+    if (argv.ignore)
+        ignoreOptions = argv.ignore.split(',').concat(ignoreOptions);
 
     var parser = new xml2js.Parser({
             ignoreAttrs: true, 

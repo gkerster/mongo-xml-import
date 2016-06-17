@@ -26,12 +26,12 @@
     "async": "^1.5.2",
     "mongoose": "^4.4.7",
     "recursive-readdir": "^2.0.0",
-    "xml2js": "*"
+    "xml2js": "*",
+    "yargs": "^4.7.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "colors": "^1.1.2",
-    "commander": "^2.9.0",
     "mocha": "^2.5.3",
     "progress": "^1.1.8"
   }
