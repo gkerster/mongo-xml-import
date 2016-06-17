@@ -3,20 +3,21 @@
 Quick and dirty command-line XML bulk load utility for MongoDB. Uses [xml2js](https://github.com/Leonidas-from-XIV/node-xml2js), [recursive-readdir](https://github.com/jergason/recursive-readdir), [mongoose](http://mongoosejs.com/), and [minimist](https://github.com/substack/minimist).
 
 ```
-USAGE:
-    importxml [OPTIONS] <db> <collection> <folder>
+Usage: importxml <cmd> [options]
 
-ARGS:
-    -d, --db <db>                   MongoDB Database
-    -c, --collection <collection>   MongoDB Collection
-    -f, --folder <folder>           Path to folder containing XML files
-    
-OPTIONS:
-    -i, --ignore [ignore]    Comma separated list of files to ignore
-    -H, --host [host]        Host to which MongoDB is running, defaults to localhost
-    -D, --Drop               Drop collection prior to insert
-    -h, --help               Output usage information
-    -V, --version            Output the version number
+Commands:
+  start [options]  import xml file(s)
+  model [options]  create mongodb collection based on specified xsd
+
+Options:
+  -d, --db          mongodb database  [string]
+  -c, --collection  mongodb collection  [string]
+  -f, --folder      path to the folder that contains the xml files  [string]
+  -i, --ignore      list XML files that should not be imported  [string]
+  -D, --drop        drop collection prior to import  [boolean] [default: false]
+  -H, --host        mongodb host  [string] [default: "localhost"]
+  -h, --help        Show help  [boolean]
+  -v, --version     Show version number  [boolean]
 ```
 
 ### Usage
