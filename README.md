@@ -7,11 +7,11 @@ Usage: importxml <cmd> [options]
 
 Commands:
   start [options]  import xml file(s)
-  model [options]  create mongodb collection based on specified xsd
+  schema [options]  create mongodb collection based on specified xsd
 
 Options:
   -d, --db          mongodb database  [string]
-  -c, --collection  mongodb collection  [string]
+  -c, --collection  mongodb collection | collection for xsd  [string]
   -f, --folder      path to the folder that contains the xml files  [string]
   -i, --ignore      list XML files that should not be imported  [string]
   -D, --drop        drop collection prior to import  [boolean] [default: false]

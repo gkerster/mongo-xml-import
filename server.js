@@ -100,10 +100,23 @@ var argv = require('yargs')
     }
   )
   .command(
-    'model [options]',
+    'schema [options]',
     'create mongodb collection based on specified xsd',
     function (yargs) {
-      return yargs.option('x', { 
+      return yargs.option('d', { 
+        description: 'mongodb database',
+        alias: 'db',
+        required: true,
+        type: 'string',
+        requiresArg: true
+      })
+      .option('c', { 
+        description: 'mongodb collection name for xsd model',
+        alias: 'collection',
+        required: true,
+        type: 'string',
+        requiresArg: true
+      }).option('x', { 
         description: 'path to xsd file',
         alias: 'xsd',
         required: true,
