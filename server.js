@@ -47,6 +47,13 @@ var argv = require('yargs')
         type: 'string',
         default: 'localhost'
       })
+      .option('p', {
+        description: 'mongodb port',
+        alias: 'port',
+        required: false,
+        type: 'string',
+        default: '27017'
+      })
   .command(
     'start [options]',
     'import xml file(s)',
@@ -94,6 +101,13 @@ var argv = require('yargs')
         type: 'string',
         default: 'localhost'
       })
+      .option('p', {
+        description: 'mongodb port',
+        alias: 'port',
+        required: false,
+        type: 'string',
+        default: '27017'
+      })
     },
     function (argv) {
       startImportProcess(argv);
@@ -122,6 +136,20 @@ var argv = require('yargs')
         required: true,
         type: 'string',
         requiresArg: true
+      })
+      .option('H', {
+        description: 'mongodb host',
+        alias: 'host',
+        required: false,
+        type: 'string',
+        default: 'localhost'
+      })
+      .option('p', {
+        description: 'mongodb port',
+        alias: 'port',
+        required: false,
+        type: 'string',
+        default: '27017'
       })
     },
     function (argv) {

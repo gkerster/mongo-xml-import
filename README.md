@@ -16,6 +16,7 @@ Options:
   -i, --ignore      list XML files that should not be imported  [string]
   -D, --drop        drop collection prior to import  [boolean] [default: false]
   -H, --host        mongodb host  [string] [default: "localhost"]
+  -p, --port        mongodb port  [string] [default: "27017"]
   -h, --help        Show help  [boolean]
   -v, --version     Show version number  [boolean]
 ```
